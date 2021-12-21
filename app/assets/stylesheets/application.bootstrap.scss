@@ -1,1 +1,11 @@
 @import 'bootstrap/scss/bootstrap';
+// Alert / Notice
+.alert-alert {
+  @extend .alert-warning;
+  margin-bottom: 0;
+}
+
+.alert-notice {
+  @extend .alert-info;
+  margin-bottom: 0;
+}

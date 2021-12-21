@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <%= link_to "Finn On Rails", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler py-0 px-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link active" %>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="badge rounded-pill bg-secondary"><%= current_user.username %></span>
+            </a>
+            <ul class="dropdown-menu mx-1 mb-2 dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><%= link_to "Account", edit_user_registration_path, class: "dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= button_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="ms-0 nav-item me-lg-2 mb-3 mt-1 mt-lg-0 mb-lg-0 d-flex align-self-center">
+            <%= link_to "Log In", new_user_session_path, class: "d-flex align-self-center text-dark text-decoration-none" %>
+            <span class="d-flex mx-2 align-self-center">or</span>
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-sm text-uppercase signup-button" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
